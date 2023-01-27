@@ -1,4 +1,3 @@
-
 #学习记录11: 异常
 
 """
@@ -6,9 +5,9 @@
 2.通过打印异常对象，可以更加详细的了解异常细节
 3.如果是没有异常的情况，建议使用 else
 4.不论如何,  finally 后的语句都会运行
+5.利用raise手动触发自定义类型的异常,只要记得继承自 Exception 类就行
 
-
-在例如用户输入数据的部分可以利用异常来告知用户输入类型有误
+例如用户输入数据的部分可以利用异常来告知用户输入类型有误
 """
 
 #1.尝试从编译器内手动获取异常,从运行结果可以得到异常类型: ZeroDivisionError
@@ -90,3 +89,28 @@ except ZeroDivisionError as e:
     print (f'异常对象信息:{e}')
 """
 
+#8.获取异常的详细信息
+"""
+import traceback
+
+try:
+    100/0
+except :
+    print(traceback.format_exc())
+"""
+
+#9.主动抛出自定义类型的异常
+"""
+class MY_ERROR1(Exception) :
+    pass
+
+class MY_ERROR2(Exception) :
+    pass
+
+test = 1
+
+if test == 1 :
+    raise MY_ERROR1()
+elif test == 2 :
+    raise MY_ERROR2()
+"""
